@@ -1,0 +1,17 @@
+<h1>Language</h1>
+
+<h2>The problem</h2>
+<p>Most screen readers can read text in several languages and allow users to choose their default language during setup. When your HTML doesn't have a specified <code>lang</code>, this default option kicks in, and if there's a mismatch the user might hear the wrong accent or improper pronunciation, making the text incomprehensible</p>
+
+<p>Adding a <code>lang</code> attribute to your HTML is an easy fix that helps render the text more accurately, load the correct pronunciation rules, and show video captions correctly. It's also part of the minimum requirements under the Web Content Accessibility Guidelines (WCAG).</p>
+
+<h2>Language in Rails</h2>
+<p>Every app generated with <code>rails new</code> creates a few default HTML files that may or may not have a defined <code>lang</code> attribute. It's a good idea to check <code>application.html.erb</code>, generated error pages, and any mailer layouts.
+
+<p>If you've implemented internationalization to translate your app into multiple languages, you can use I18n in your HTML and set the language dynamically. For example, you could do: <code>lang="<%%= I18n.default_locale %>"</code>.</p>
+
+<h2>Examples</h2>
+<h3>Good</h3>
+<h3>Bad</h3>
+
+<%= link_to 'Home', root_path %>

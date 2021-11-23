@@ -1,0 +1,16 @@
+body {
+  width: 60%;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+code {
+  background-color: #f1f1f1;
+  font-size: 115%;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    width: 90%;
+  }
+}
