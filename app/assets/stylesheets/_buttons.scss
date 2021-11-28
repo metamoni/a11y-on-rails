@@ -1,0 +1,19 @@
+@import 'colours';
+
+.button {
+  padding: 0.75em 1em;
+  border-radius: 0.25em;
+  background-color: $black;
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $white;
+    color: $black;
+    border: 2px solid $black;
+  }
+
+  // &:focus {
+  //   // add box shadow here
+  // }
+}
