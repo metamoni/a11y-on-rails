@@ -22,7 +22,7 @@ gem 'font-awesome-sass', '~> 5.15.1'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
+  gem 'pry', '~> 0.13.1'
 end
 
 group :development do
