@@ -25,7 +25,7 @@ RSpec.describe 'Visit homepage', type: :feature do
     click_link 'Images'
     expect(page).to have_current_path(images_path)
 
-    click_link 'Home'
+    click_link 'Back to homepage'
 
     click_link 'Forms'
     expect(page).to have_current_path(forms_path)

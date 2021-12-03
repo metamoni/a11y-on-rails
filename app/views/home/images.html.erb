@@ -19,22 +19,28 @@
   <h3>Without an alt text</h3>
   <code aria-hidden="true"><%%= image_tag "bruno.jpeg" %></code>
   <p>This view helper generates an image without an <code>alt</code> text. Without any information to go on, screen readers will describe it as an "unlabelled image".</p>
-  <%= image_tag "bruno.jpeg", style: 'height: 50%; width: 50%;' %>
+  <%= image_tag "bruno.jpeg", style: 'height: 50%; width: 50%;', "aria-hidden": true %>
 
   <h3>With a descriptive alt text</h3>
-  <code aria-hidden="true"><%%= image_tag "bruno.jpeg", alt: "Dog lying on his back, looking like he's smiling at the camera" %></code>
+  <code><%%= image_tag "bruno.jpeg", alt: "Dog lying on his back, looking like he's smiling at the camera" %></code>
   <p>For this image, however, the screen reader will announce the provided alt text.</p>
   <%= image_tag "bruno.jpeg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking like he's smiling at the camera" %>
+</section>
+
+<section>
+  <h2>A note on SVGs</h2>
+  <p>SVGs are a bit different because they don't have an <code>alt</code> attribute. Instead, they need <code>role="img"</code>, along with a <code>title</code> tag that includes a brief description. Decorative SVGs should be hidden with <code>role="presentation"</code>.</p>
+
+  <p>Using <a href="https://thoughtbot.com/blog/organized-workflow-for-svg">this example</a> as a starting point, I created an <code>SvgHelper</code> that allows you to embed SVGs inline and easily assign all the attributes you need to make them accessible. If a title is specified, the <code>role</code> is automatically updated to <code>img</code>. When no title is specified, the <code>role</code> is set to <code>presentation</code>.</p>
+
+  <p>With this helper, you can now include your SVGs like this: <code><%%= inline_svg 'edinburgh.svg', style: 'background-color:DarkSlateBlue', title: 'The Edinburgh skyline on a purple background' %></code>. You could also adapt it to support other SVG attributes if necessary.</p>
+
+  <%= inline_svg 'edinburgh.svg', style: 'background-color:DarkSlateBlue', title: 'The Edinburgh skyline on a purple background' %>
 </section>
 
 <section class="tip-container">
   <h2 class="tip-title">Try it yourself</h2>
   <p>If you're on a Mac, you can test this yourself with VoiceOver. Press <code>cmd + F5</code> to turn it on, then use <code>control + option + right/left arrow</code> to navigate to the desired image. When you're done you can switch VoiceOver off with <code>cmd + F5</code>.</p>
-</section>
-
-<section>
-  <h2>A note on SVGs</h2>
-  <p>SVGs are a bit different because they don't support the <code>alt</code> attribute. Instead, you can give them a <code>role="img"</code>, along with a brief description in a <code>title</code> tag. Decorative SVGs should to be hidden with <code>role="presentation"</code>.</p>
 </section>
 
 <section class="mb-2">
