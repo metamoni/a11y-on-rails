@@ -6,3 +6,5 @@ In most traditional web apps, you can achieve a reasonable level of accessibilit
 The framework provides lots of handy Action View Helpers and they come with everything you need to make your app accessible. However, just like when writing plain HTML, it's easy enough to forget about crucial attributes and end up with a page that is not accessible.
 
 This website covers navigation, links and buttons, language and internationalization, images, forms, validations, flash messages, validations in Rails apps and how to make these accessible.
+
+[Go to A11yOnRails](https://a11y-on-rails.herokuapp.com/)
