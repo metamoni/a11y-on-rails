@@ -17,14 +17,14 @@
   <p>To sighted users, the two images below might look identical. Screen reader users, on the other hand, will get a completely different experience.</p>
 
   <h3>Without an alt text</h3>
-  <code aria-hidden="true"><%%= image_tag "bruno.jpeg" %></code>
+  <code aria-hidden="true"><%%= image_tag "bruno.jpg" %></code>
   <p>This view helper generates an image without an <code>alt</code> text. Without any information to go on, screen readers will describe it as an "unlabelled image".</p>
-  <%= image_tag "bruno.jpeg", style: 'height: 50%; width: 50%;', "aria-hidden": true %>
+  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', "aria-hidden": true %>
 
   <h3>With a descriptive alt text</h3>
-  <code><%%= image_tag "bruno.jpeg", alt: "Dog lying on his back, looking like he's smiling at the camera" %></code>
+  <code><%%= image_tag "bruno.jpg", alt: "Dog lying on his back, looking like he's smiling at the camera" %></code>
   <p>For this image, however, the screen reader will announce the provided alt text.</p>
-  <%= image_tag "bruno.jpeg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking like he's smiling at the camera" %>
+  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking like he's smiling at the camera" %>
 </section>
 
 <section>
