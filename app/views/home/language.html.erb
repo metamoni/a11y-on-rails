@@ -8,10 +8,6 @@
 <h2>Language in Rails</h2>
 <p>Every app generated with <code>rails new</code> creates a few default HTML files that may or may not have a defined <code>lang</code> attribute. It's a good idea to check <code>application.html.erb</code>, generated error pages, and any mailer layouts.
 
-<p>If you've implemented internationalization to translate your app into multiple languages, you can use I18n in your HTML and set the language dynamically. For example, you could do: <code>lang="<%%= I18n.default_locale %>"</code>.</p>
-
-<h2>Examples</h2>
-<h3>Good</h3>
-<h3>Bad</h3>
+<p class="mb-2">If you've implemented internationalization to translate your app into multiple languages, you can use I18n in your HTML and set the language dynamically. For example, you could do: <code>lang="<%%= I18n.default_locale %>"</code>.</p>
 
 <%= render 'shared/back_link' %>
