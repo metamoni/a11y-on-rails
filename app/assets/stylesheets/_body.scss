@@ -9,6 +9,17 @@ code {
   font-size: 115%;
 }
 
+form {
+  input {
+    margin-bottom: 0.5em;
+  }
+
+  input[type=submit] {
+    margin-top: 1em;
+  }
+}
+
+
 @media screen and (max-width: 768px) {
   body {
     width: 90%;

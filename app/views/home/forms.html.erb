@@ -1,2 +1,124 @@
 <h1>Forms</h1>
-<%= link_to 'Home', root_path %>
+
+<section>
+  <h2>The problem</h2>
+  <p>
+    The purpose of each form field should be clear, both for the sake of your sighted users, and for the sake of those using assitive tech. Web browsers use labels to provide a larger clickable area, making it easier to jump to the right input. And screen readers need labels to describe form controls to users.
+  </p>
+</section>
+
+<section>
+  <h2>Labels in Rails</h2>
+  <p class="mb-0">
+    At first glance, the example below looks OK. The purpose of each field seems to be described anyway. However, this is done with plain text rather than with labels: <code>Product name: <%%= f.text_field :product_name %></code>. Since we don't have any label tags that we've associated with each input, the functionality of this form is limited. Many people would struggle to tick "In stock", as the click area is very small. But with a properly associated label they'd be able to click both the text and the box to interact with it.
+  </p>
+
+  <%= form_for :form, html: { class: "inaccessible-form" } do |f| %><br />
+    Product name: <%= f.text_field :product_name %><br />
+    Description: <%= f.text_field :description %><br />
+    In stock: <%= f.check_box :available %><br />
+    <%= f.submit "Save" %>
+  <% end %>
+
+  <article>
+    <h3>Explicit labels</h3>
+    <p>
+      Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag, and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
+    </p>
+    
+    <p class="mb-0">
+      Let's fix the previous form using explicit labels. Here's the code:<br/><br/>
+
+      <code>
+        <%%= form_for :product do |f| %><br />
+          <%%= f.label :product_name, "Product name" %>
+          <%%= f.text_field :product_name %><br />
+          <%%= f.label :description, "Description" %>
+          <%%= f.text_field :description %><br />
+          <%%= f.label :available, "In stock" %>
+          <%%= f.check_box :available %><br />
+          <%%= f.submit "Save" %>
+        <%% end %>
+      </code>
+      <br/><br/>
+      ...and the result:
+    </p>
+
+    <%= form_for :product do |f| %><br />
+      <%= f.label :product_name, "Product name" %>
+      <%= f.text_field :product_name %><br />
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %><br />
+      <%= f.label :available, "In stock" %>
+      <%= f.check_box :available %><br />
+      <%= f.submit "Save" %>
+    <% end %>
+  </article>
+
+  <article>
+    <h3>Implicit labels</h3>
+    <p>
+      Alternatively, you can use an implicit label, which wraps the input. But according to <a href="https://www.w3.org/WAI/tutorials/forms/labels/#associating-labels-implicitly">W3C</a> screen readers have better support for explicit labels, so keep that in mind.
+    </p>
+  </article>
+
+  <article>
+    <h3>Hiding labels</h3>
+    <p>
+      All inputs need labels. When you don't want them to be displayed on the page, you can either hide them or attach an <code>aria-label</code> to your inputs to make the form accessible to screen readers. Scott O'Hara talks about how to do this in his blog post <%= link_to "Inclusively Hidden", "https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html" %>.
+    </p>
+
+    <p>Below I'm using the <code>visually-hidden</code> class to hide the label from sighted users.</p>
+    
+    <%= label_tag :search, "Type something to search", class: "visually-hidden" %>
+    <%= text_field_tag "search", params[:search] %>
+    <%= submit_tag "Search" %>
+  </article>
+</section>
+
+<section class="tip-container">
+  <h2 class="tip-title">Try it yourself</h2>
+  <h3>Using a mouse</h3>
+  <p>
+    Click "Product name", "Description", and "In stock" in the first form on this page. Notice that nothing happens. Now try the second form, where we added explicit labels. Notice that clicking them activates the correct input.
+  </p>
+
+  <h3>Using VoiceOver</h3>
+  <p>
+    Press <code>cmd + F5</code> to turn VoiceOver on, then use <code>control + option + right/left arrow</code> to navigate to the first form. For inputs without labels, the screen reader reads "edit text, blank" and "unticked, tick box". Users won't be able to tell what these fields are for. Now navigate to the second form with explicit labels. Here the screen reader announces the purpose of the fields - "Product name, edit text" and "In stock, unticked, tick box". And for the search input with a hidden label, it reads "Type something to search, menu pop-up, edit text". When you're done you can switch VoiceOver off with <code>cmd + F5</code>.
+  </p>
+</section>
+
+<%# <section>
+  <h2>Labels in simple_form</h2>
+  <p></p>
+</section> %>
+
+<%# <section>
+  <h2>Form groups</h2>
+    <p>Let's take the <code>radio_button</code> as an example. For this element, Rails generates an input id by joining the object name, method, and value with an underscore. The input below gets an id of <code>post_category_accessibility</code>. The label's <code>for</code> attribute is generated from the object and method names, which are the first two arguments, the third one being the string value that's rendered on the page. So to associate them, we need to combine the method and value of the input.</p>
+  <p>
+    <fieldset>
+      <legend>Which color do you prefer?</legend>
+      <%= form_for :color do |f| %>
+        <%# <%= radio_button :color, :select, :red %> 
+        <%# <%= label :color, :select_red, 'Red' %>
+        <%# <%= radio_button :color, :select, :green %> 
+        <%# <%= label :color, :select_green, 'Green' %>
+        <%# <%= radio_button :color, :select, :blue %>
+        <%# <%= label :color, :select_blue, 'Blue' %>
+      <%# <% end %>
+    <%# </fieldset> %>
+  <%# </p> %>
+<%# </section> %>
+
+<section class="mb-2">
+  <h2>Resources</h2>
+  <ul>
+    <li><a href="https://apidock.com/rails/ActionView/Helpers/FormHelper/label">Rails docs - Label form helper</a></li>
+    <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/">WAI Tutorials - Labels</a></li>
+    <li><a href="https://github.com/heartcombo/simple_form#usage">Labels in simple_form</a></li>
+  </ul>
+</section>
+
+<%= render 'shared/back_link' %>
