@@ -29,30 +29,31 @@
     <p class="mb-0">
       Let's fix the previous form using explicit labels. Here's the code:<br/><br/>
 
-      <code>
+      <code class="block">
         <%%= form_for :product do |f| %><br />
-          <%%= f.label :product_name, "Product name" %>
-          <%%= f.text_field :product_name %><br />
-          <%%= f.label :description, "Description" %>
-          <%%= f.text_field :description %><br />
-          <%%= f.label :available, "In stock" %>
-          <%%= f.check_box :available %><br />
-          <%%= f.submit "Save" %>
+        &nbsp;&nbsp;<%%= f.label :product_name, "Product name" %>
+        <%%= f.text_field :product_name %><br />
+        &nbsp;&nbsp;<%%= f.label :description, "Description" %>
+        <%%= f.text_field :description %><br />
+        &nbsp;&nbsp;<%%= f.label :available, "In stock" %>
+        <%%= f.check_box :available %><br />
+        &nbsp;&nbsp;<%%= f.submit "Save" %><br />
         <%% end %>
       </code>
-      <br/><br/>
-      ...and the result:
     </p>
-
-    <%= form_for :product do |f| %><br />
-      <%= f.label :product_name, "Product name" %>
-      <%= f.text_field :product_name %><br />
-      <%= f.label :description, "Description" %>
-      <%= f.text_field :description %><br />
-      <%= f.label :available, "In stock" %>
-      <%= f.check_box :available %><br />
-      <%= f.submit "Save" %>
-    <% end %>
+    <p class="mb-0">
+      ...and the result:
+      
+      <%= form_for :product do |f| %><br />
+        <%= f.label :product_name, "Product name" %>
+        <%= f.text_field :product_name %><br />
+        <%= f.label :description, "Description" %>
+        <%= f.text_field :description %><br />
+        <%= f.label :available, "In stock" %>
+        <%= f.check_box :available %><br />
+        <%= f.submit "Save" %>
+      <% end %>
+    </p>
   </article>
 
   <article>
@@ -89,28 +90,28 @@
   </p>
 </section>
 
-<%# <section>
+<section>
   <h2>Labels in simple_form</h2>
   <p></p>
-</section> %>
+</section>
 
-<%# <section>
+<section>
   <h2>Form groups</h2>
     <p>Let's take the <code>radio_button</code> as an example. For this element, Rails generates an input id by joining the object name, method, and value with an underscore. The input below gets an id of <code>post_category_accessibility</code>. The label's <code>for</code> attribute is generated from the object and method names, which are the first two arguments, the third one being the string value that's rendered on the page. So to associate them, we need to combine the method and value of the input.</p>
   <p>
     <fieldset>
       <legend>Which color do you prefer?</legend>
       <%= form_for :color do |f| %>
-        <%# <%= radio_button :color, :select, :red %> 
-        <%# <%= label :color, :select_red, 'Red' %>
-        <%# <%= radio_button :color, :select, :green %> 
-        <%# <%= label :color, :select_green, 'Green' %>
-        <%# <%= radio_button :color, :select, :blue %>
-        <%# <%= label :color, :select_blue, 'Blue' %>
-      <%# <% end %>
-    <%# </fieldset> %>
-  <%# </p> %>
-<%# </section> %>
+        <%= radio_button :color, :select, :red %> 
+        <%= label :color, :select_red, 'Red' %>
+        <%= radio_button :color, :select, :green %> 
+        <%= label :color, :select_green, 'Green' %>
+        <%= radio_button :color, :select, :blue %>
+        <%= label :color, :select_blue, 'Blue' %>
+      <% end %>
+    </fieldset>
+  </p>
+</section>
 
 <section class="mb-2">
   <h2>Resources</h2>
