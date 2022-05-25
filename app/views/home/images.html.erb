@@ -22,9 +22,11 @@
   <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', "aria-hidden": true %>
 
   <h3>With a descriptive alt text</h3>
-  <code><%%= image_tag "bruno.jpg", alt: "Dog lying on his back, looking like he's smiling at the camera" %></code>
+  <code>
+    <%%= image_tag "bruno.jpg", alt: "Dog lying on his back, looking happy" %>
+  </code>
   <p>For this image, however, the screen reader will announce the provided alt text.</p>
-  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking like he's smiling at the camera" %>
+  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking happy" %>
 </section>
 
 <section>
@@ -33,9 +35,13 @@
 
   <p>Using <a href="https://thoughtbot.com/blog/organized-workflow-for-svg">this example</a> as a starting point, I created an <code>SvgHelper</code> that allows you to embed SVGs inline and easily assign all the attributes you need to make them accessible. If a title is specified, the <code>role</code> is automatically updated to <code>img</code>. When no title is specified, the <code>role</code> is set to <code>presentation</code>.</p>
 
-  <p>With this helper, you can now include your SVGs like this: <code><%%= inline_svg 'edinburgh.svg', style: 'background-color:DarkSlateBlue', title: 'The Edinburgh skyline on a purple background' %></code>. You could also adapt it to support other SVG attributes if necessary.</p>
+  <p>With this helper, you can now include your SVGs like this:</p>
+  <code>
+    <%%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background' %>
+  </code>
+  <p>You could also adapt it to support other SVG attributes if necessary.</p>
 
-  <%= inline_svg 'edinburgh.svg', style: 'background-color:DarkSlateBlue', title: 'The Edinburgh skyline on a purple background' %>
+  <%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background', style: 'background-color:DarkSlateBlue' %>
 </section>
 
 <section class="tip-container">
