@@ -16,7 +16,10 @@ gem "bootsnap", ">= 1.4.4", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails", "~> 2.1"
-gem 'font-awesome-sass', '~> 5.15.1'
+gem "font-awesome-sass", "~> 5.15.1"
+gem "coderay"
+gem "redcarpet"
+gem "emd"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

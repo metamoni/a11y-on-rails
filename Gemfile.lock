@@ -101,6 +101,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.4.4)
     dumb_delegator (1.0.0)
+    emd (0.6.0)
+      redcarpet (= 3.5.1)
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -178,6 +180,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5.0.beta3)
     rake (13.0.6)
+    redcarpet (3.5.1)
     redis (4.5.1)
     regexp_parser (2.1.1)
     rexml (3.2.5)
@@ -255,7 +258,9 @@ DEPENDENCIES
   axe-core-rspec
   bootsnap (>= 1.4.4)
   capybara (>= 3.26)
+  coderay
   database_cleaner
+  emd
   factory_bot_rails
   font-awesome-sass (~> 5.15.1)
   importmap-rails (>= 0.3.4)
@@ -265,6 +270,7 @@ DEPENDENCIES
   puma (~> 5.6)
   rails (~> 7.0.0.alpha2)
   rails-controller-testing
+  redcarpet
   redis (~> 4.0)
   rspec-rails
   sassc-rails (~> 2.1)
