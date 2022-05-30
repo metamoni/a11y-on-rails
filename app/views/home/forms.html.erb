@@ -9,69 +9,70 @@
 
 <section>
   <h2>Labels in Rails</h2>
-  <p class="mb-0">
+  <p>
     At first glance, the example below looks OK. The purpose of each field seems to be described anyway. However, this is done with plain text rather than with labels: <code>Product name: <%%= f.text_field :product_name %></code>. Since we don't have any label tags that we've associated with each input, the functionality of this form is limited. Many people would struggle to tick "In stock", as the click area is very small. But with a properly associated label they'd be able to click both the text and the box to interact with it.
   </p>
 
-  <%= form_for :form, html: { class: "inaccessible-form" } do |f| %><br />
-    Product name: <%= f.text_field :product_name %><br />
-    Description: <%= f.text_field :description %><br />
-    In stock: <%= f.check_box :available %><br />
+  <%= form_for :form, html: { class: "inaccessible-form" } do |f| %>
+    Product name: <%= f.text_field :product_name %>
+    Description: <%= f.text_field :description %>
+    In stock: <%= f.check_box :available %>
     <%= f.submit "Save" %>
   <% end %>
 
-  <article>
+  <article class="mt-2">
     <h3>Explicit labels</h3>
     <p>
       Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag, and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
     </p>
     
     <p class="mb-0">
-      Let's fix the previous form using explicit labels. Here's the code:<br/><br/>
+      Let's fix the previous form using explicit labels. Here's the code:
 
-      <code class="block">
-        <%%= form_for :product do |f| %><br />
-        &nbsp;&nbsp;<%%= f.label :product_name, "Product name" %>
-        <%%= f.text_field :product_name %><br />
-        &nbsp;&nbsp;<%%= f.label :description, "Description" %>
-        <%%= f.text_field :description %><br />
-        &nbsp;&nbsp;<%%= f.label :available, "In stock" %>
-        <%%= f.check_box :available %><br />
-        &nbsp;&nbsp;<%%= f.submit "Save" %><br />
+      <code>
+      <pre>
+
+        <%%= form_for :product do |f| %>
+        <%%= f.label :product_name, "Product name" %>
+        <%%= f.text_field :product_name %>
+        <%%= f.label :description, "Description" %>
+        <%%= f.text_field :description %>
+        <%%= f.label :available, "In stock" %>
+        <%%= f.check_box :available %>
+        <%%= f.submit "Save" %>
         <%% end %>
+      </pre>
       </code>
     </p>
-    <p class="mb-0">
-      ...and the result:
-      
-      <%= form_for :product do |f| %><br />
-        <%= f.label :product_name, "Product name" %>
-        <%= f.text_field :product_name %><br />
-        <%= f.label :description, "Description" %>
-        <%= f.text_field :description %><br />
-        <%= f.label :available, "In stock" %>
-        <%= f.check_box :available %><br />
-        <%= f.submit "Save" %>
-      <% end %>
-    </p>
+    <p>...and the result:</p>
+    
+    <%= form_for :product do |f| %>
+      <%= f.label :product_name, "Product name" %>
+      <%= f.text_field :product_name %>
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+      <%= f.label :available, "In stock" %>
+      <%= f.check_box :available %>
+      <%= f.submit "Save" %>
+    <% end %>
   </article>
 
-  <article>
+  <article class="mt-2">
     <h3>Implicit labels</h3>
     <p>
       Alternatively, you can use an implicit label, which wraps the input. But according to <a href="https://www.w3.org/WAI/tutorials/forms/labels/#associating-labels-implicitly">W3C</a> screen readers have better support for explicit labels, so keep that in mind.
     </p>
   </article>
 
-  <article>
+  <article class="mt-2 mb-4">
     <h3>Hiding labels</h3>
     <p>
       All inputs need labels. When you don't want them to be displayed on the page, you can either hide them or attach an <code>aria-label</code> to your inputs to make the form accessible to screen readers. Scott O'Hara talks about how to do this in his blog post <%= link_to "Inclusively Hidden", "https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html" %>.
     </p>
 
-    <p>Below I'm using the <code>visually-hidden</code> class to hide the label from sighted users.</p>
+    <p>Below I'm using the <code>sr-only</code> class to hide the label from sighted users.</p>
     
-    <%= label_tag :search, "Type something to search", class: "visually-hidden" %>
+    <%= label_tag :search, "Type something to search", class: "sr-only" %>
     <%= text_field_tag "search", params[:search] %>
     <%= submit_tag "Search" %>
   </article>
@@ -92,7 +93,7 @@
 
 <section>
   <h2>Labels in simple_form</h2>
-  <p></p>
+  <p>TBD</p>
 </section>
 
 <section>
