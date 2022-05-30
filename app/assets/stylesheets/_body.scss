@@ -6,16 +6,17 @@ body {
 
 code {
   background-color: #f1f1f1;
-  font-size: 115%;
+}
 
-  &.block {
-    display: inline-block;
-    padding: 0.5em;
-  }
+pre {
+  width: 100%;
+  font-size: 115%;
+  background-color: #f1f1f1;
 }
 
 form {
   input {
+    display: block;
     margin-bottom: 0.5em;
   }
 

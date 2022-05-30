@@ -1,6 +1,6 @@
 @import 'colours';
 
-.visually-hidden {
+.sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -18,8 +18,16 @@
   margin-bottom: 2em;
 }
 
+.mb-4 {
+  margin-bottom: 4em;
+}
+
 .mb-0 {
   margin-bottom: 0;
+}
+
+.mt-2 {
+  margin-top: 2em;
 }
 
 .tip-container {
