@@ -1,2 +1,37 @@
 <h1>Flash messages</h1>
-<%= link_to 'Home', root_path %>
+
+<section>
+  <h2>The problem</h2>
+
+  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages are rendered without a page reload and are skipped by screen readers. Assistive tech users will not be able to hear any flash messages dynamically added to the page.</p>
+
+  <p>This is where ARIA live regions come in. These are useful for any dynamic updates, including search results.</p>
+</section>
+
+<section class="mb-2">
+  <h2>ARIA live regions and flash messages</h2>
+
+  <p>Say we have the following code in our view:</p>
+
+    <code>
+    <pre>
+
+    <%% flash.each do |type, msg| %>
+      &lt;p&gt;<%%= msg %>&lt;/p&gt;
+    <%% end %>
+    </pre>
+    </code>
+
+  <p>To make assistive tech announce the message, we can add an <code>aria-live</code> attribute to the paragraph element.</p>
+
+  <code>
+  <pre>
+
+    <%% flash.each do |type, msg| %>
+      &lt;p aria-live="polite"&gt;<%%= msg %>&lt;/p&gt;
+    <%% end %>
+  </pre>
+  </code>
+</section>
+
+<%= render 'shared/back_link' %>
