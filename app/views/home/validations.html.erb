@@ -1,2 +1,66 @@
 <h1>Validations</h1>
-<%= link_to 'Home', root_path %>
+
+<section>
+  <h2>The problem</h2>
+
+  <p>Validation errors and flash messages are a great way to communicate important information to your users. But dynamic page updates rendered without a page reload are not announced by screen readers.</p>
+
+  <p>This is where ARIA live regions come in. These are useful for any dynamic updates, including search results.</p>
+</section>
+
+<section>
+  <h2>How to use ARIA live regions</h2>
+
+  <p>Say we have the following code in our view:</p>
+
+    <code>
+    <pre>
+
+    <%% flash.each do |type, msg| %>
+      &lt;p&gt;<%%= msg %>&lt;/p&gt;
+    <%% end %>
+    </pre>
+    </code>
+
+  <p>To make assistive tech announce the message, we can add an <code>aria-live</code> attribute to the paragraph element.</p>
+
+  <code>
+  <pre>
+
+    <%% flash.each do |type, msg| %>
+      &lt;p aria-live="polite"&gt;<%%= msg %>&lt;/p&gt;
+    <%% end %>
+  </pre>
+  </code>
+</section>
+
+<section class="mb-4">
+  <h2>Form validation</h2>
+
+  <p>The form below uses native HTML validation by adding the <code>required</code> attribute to the field. The screen reader announces the error automatically, without any extra code.</p>
+
+  <%= form_for :product do |f| %>
+    <%= f.label :product_name, "Product name" %>
+    <%= f.text_field :product_name %>
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description %>
+    <%= f.label :available, "In stock" %>
+    <%= f.check_box :available %>
+    <%= f.submit "Save" %>
+  <% end %>
+</section>
+
+<section class="tip-container">
+  <h2 class="tip-title">Try it yourself</h2>
+  <p>If you're on a Mac, you can verify your work with VoiceOver. Press <code>cmd + F5</code> to turn it on, then try to submit the form without filling out the input. You should hear the validation error being announced.</p>
+</section>
+
+<section class="mb-2">
+  <h2>Resources</h2>
+  <ul>
+    <li><a href="https://github.com/joemasilotti/railsdevs.com/pull/440">Example PR on Railsdevs - announcing flash messages to screen readers</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">MDN - ARIA live regions</a></li>
+  </ul>
+</section>
+
+<%= render 'shared/back_link' %>
