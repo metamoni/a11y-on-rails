@@ -1,19 +1,32 @@
 <h1>Accessible images</h1>
 
-<section>
-  <h2>The problem</h2>
+<nav aria-label="Page contents menu">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#images-problem">The problem</a></li>
+    <li><a href="#images-rails">Images in rails</a></li>
+    <li><a href="#images-how-to">How it works</a></li>
+    <li><a href="#accessible-svgs">Accessible SVGs</a></li>
+    <li><a href="#images-sr-testing">Screen reader testing</a></li>
+    <li><a href="#images-resources">Resources</a></li>
+  </ol>
+</nav>
+
+
+<article aria-labelledby="images-problem-header" id="images-problem">
+  <h2 id="images-problem-header">The problem</h2>
   <p>According to the <a href="https://webaim.org/projects/million/">WebAIM Million</a>, an annual accessibiloty audit of the top 1,000,000 websites, missing alternative text for images is the second most common issue.</p>
 
   <p>All images on the web must have an <code>alt</code> attribute. Screen readers need to be able to describe relevant images to users, and they can only do that if there's an <code>alt</code> text. Decorative images, on the other hand, are a hindrance to assitive tech users and should be ignored with <code>alt=""</code>.</p>
-</section>
+</article>
 
-<section>
-  <h2>Images in Rails</h2>
+<article aria-labelledby="images-rails-header" id="images-rails">
+  <h2 id="images-rails-header">Images in Rails</h2>
   <p>Rails' image_tag helper makes it easy to add images to your website. <code><%%= image_tag "icon.png" %></code> will generate the following HTML: <code>&lt;img src="/assets/icon.png" /&gt;</code>. To make this accessible, you need to add an <code>alt</code> attribute, like so: <code><%%= image_tag "rails.png", alt: "Alternative text" %></code>.</p>
-</section>
+</article>
 
-<section>
-  <h2>How it works</h2>
+<article aria-labelledby="images-how-to-header" id="images-how-to">
+  <h2 id="images-how-to-header">How it works</h2>
   <p>To sighted users, the two images below might look identical. Screen reader users, on the other hand, will get a completely different experience.</p>
 
   <h3>Without an alt text</h3>
@@ -23,40 +36,56 @@
 
   <h3>With a descriptive alt text</h3>
   <code>
-    <%%= image_tag "bruno.jpg", alt: "Dog lying on his back, looking happy" %>
+    <%%= image_tag "bruno.jpg", alt: "Dog with a tennis ball in its mouth" %>
   </code>
   <p>For this image, however, the screen reader will announce the provided alt text.</p>
-  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog lying on his back, looking happy" %>
-</section>
+  <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog with a tennis ball in its mouth" %>
+</article>
 
-<section>
-  <h2>A note on SVGs</h2>
-  <p>SVGs are a bit different because they don't have an <code>alt</code> attribute. Instead, they need <code>role="img"</code>, along with a <code>title</code> tag that includes a brief description. Decorative SVGs should be hidden with <code>role="presentation"</code>.</p>
+<article aria-labelledby="accessible-svgs-header" id="accessible-svgs">
+  <h2 id="accessible-svgs-header">Accessible SVGs</h2>
+  <p>SVGs are a bit different because they don't have an <code>alt</code> attribute. Instead, they need <code>role="img"</code>, along with a <code>title</code> and, optionally, a description inside a <code>desc</code> tag. Decorative SVGs should be hidden with <code>role="presentation"</code>.</p>
 
-  <p>Using <a href="https://thoughtbot.com/blog/organized-workflow-for-svg">this example</a> as a starting point, I created an <code>SvgHelper</code> that allows you to embed SVGs inline and easily assign all the attributes you need to make them accessible. If a title is specified, the <code>role</code> is automatically updated to <code>img</code>. When no title is specified, the <code>role</code> is set to <code>presentation</code>.</p>
+  <p>James Martin's <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg" %> gem allows you to use the <code>inline_svg_tag</code> helper to add a title and description. It also adds an ARIA label for additional support across different browsers and screen readers. Here's the correct usage for an image that needs text:</p>
 
-  <p>With this helper, you can now include your SVGs like this:</p>
   <code>
-    <%%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background' %>
+    <%%=
+      inline_svg_tag('icon.svg',
+        aria: true, title: 'An SVG',
+        desc: 'This is my SVG. There are many like it. You get the picture')
+    %>
   </code>
-  <p>You could also adapt it to support other SVG attributes if necessary.</p>
+
+  <p>and for a hidden SVG:</p>
+
+  <code>
+    <%%= inline_svg_tag('icon.svg', aria_hidden: true) %>
+  </code>
+
+  <p>If you prefer not to add another gem, you can write your own helper. I used <%= link_to "this example", "https://thoughtbot.com/blog/organized-workflow-for-svg" %> as a starting point to create <%= link_to "my own simplified helper", "https://github.com/metamoni/a11y-on-rails/blob/main/app/helpers/svg_helper.rb" %>. When no title is specified, the <code>role</code> is set to <code>presentation</code> and the image is hidden from screen readers. If a <code>title</code> is specified, the <code>role</code> is automatically updated to <code>img</code>. You can extend this to support a <code>desc</code>, <code>aria-label</code> or any other attribute you need. Here's how it works:</p>
+
+  <p>
+    <code>
+      <%%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background' %>
+    </code>
+  </p>
 
   <%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background', style: 'background-color:DarkSlateBlue' %>
-</section>
+</article>
 
-<section class="tip-container">
-  <h2 class="tip-title">Try it yourself</h2>
+<article class="tip-container mt-2" aria-labelledby="images-sr-testing-header" id="images-sr-testing">
+  <h2 id="images-sr-testing-header" class="tip-title">Try it yourself</h2>
   <p>If you're on a Mac, you can test this yourself with VoiceOver. Press <code>cmd + F5</code> to turn it on, then use <code>control + option + right/left arrow</code> to navigate to the desired image. When you're done you can switch VoiceOver off with <code>cmd + F5</code>.</p>
-</section>
+</article>
 
-<section class="mb-2">
-  <h2>Resources</h2>
+<article class="mb-2" aria-labelledby="images-resources-header" id="images-resources">
+  <h2 id="images-resources-header">Resources</h2>
   <ul>
     <li><a href="https://webaim.org/techniques/alttext/">WebAIM - Alternative Text</a></li>
     <li><a href="https://www.w3.org/WAI/tutorials/images/tips/">W3 WAI - Tips and tricks for writing alt text</a></li>
     <li><a href="https://www.w3.org/WAI/tutorials/images/decision-tree/">W3 WAI - How to use alt text in various situations</a></li>
     <li><a href="https://www.deque.com/blog/creating-accessible-svgs/">Creating accessible SVGs</a></li>
   </ul>
-</section>
+</article>
 
 <%= render 'shared/back_link' %>
