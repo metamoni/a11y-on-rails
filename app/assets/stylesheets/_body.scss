@@ -15,7 +15,7 @@ pre {
 }
 
 form {
-  input {
+  input[type=text], input[type=submit] {
     display: block;
     margin-bottom: 0.5em;
   }
