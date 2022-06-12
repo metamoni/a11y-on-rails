@@ -1,14 +1,14 @@
 <h1>Accessible forms</h1>
 
-<section>
-  <h2>The problem</h2>
+<article aria-labelledby="forms-the-problem">
+  <h2 id="forms-the-problem">The problem</h2>
   <p>
     The purpose of each form field should be clear, both for the sake of your sighted users, and for the sake of those using assitive tech. Web browsers use labels to provide a larger clickable area, making it easier to jump to the right input. And screen readers need labels to describe form controls to users.
   </p>
-</section>
+</article>
 
-<section>
-  <h2>Labels in Rails</h2>
+<article aria-labelledby="forms-labels-in-rails">
+  <h2 id="forms-labels-in-rails">Labels in Rails</h2>
   <p>
     At first glance, the example below looks OK. The purpose of each field seems to be described anyway. However, this is done with plain text rather than with labels: <code>Product name: <%%= f.text_field :product_name %></code>. Since we don't have any label tags that we've associated with each input, the functionality of this form is limited. Many people would struggle to tick "In stock", as the click area is very small. But with a properly associated label they'd be able to click both the text and the box to interact with it.
   </p>
@@ -20,8 +20,8 @@
     <%= f.submit "Save" %>
   <% end %>
 
-  <article class="mt-2">
-    <h3>Explicit labels</h3>
+  <article class="mt-2" aria-labelledby="explicit-labels">
+    <h3 id="explicit-labels">Explicit labels</h3>
     <p>
       Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag, and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
     </p>
@@ -57,15 +57,15 @@
     <% end %>
   </article>
 
-  <article class="mt-2">
-    <h3>Implicit labels</h3>
+  <article class="mt-2" aria-labelledby="implicit-labels">
+    <h3 id="implicit-labels">Implicit labels</h3>
     <p>
       Alternatively, you can use an implicit label, which wraps the input. But according to <a href="https://www.w3.org/WAI/tutorials/forms/labels/#associating-labels-implicitly">W3C</a> screen readers have better support for explicit labels, so keep that in mind.
     </p>
   </article>
 
-  <article class="mt-2 mb-4">
-    <h3>Hiding labels</h3>
+  <article class="mt-2 mb-4" aria-labelledby="forms-hiding-labels">
+    <h3 id="forms-hiding-labels">Hiding labels</h3>
     <p>
       All inputs need labels. When you don't want them to be displayed on the page, you can either hide them or attach an <code>aria-label</code> to your inputs to make the form accessible to screen readers. Scott O'Hara talks about how to do this in his blog post <%= link_to "Inclusively Hidden", "https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html" %>.
     </p>
@@ -76,10 +76,10 @@
     <%= text_field_tag "search", params[:search] %>
     <%= submit_tag "Search" %>
   </article>
-</section>
+</article>
 
-<section class="tip-container">
-  <h2 class="tip-title">Try it yourself</h2>
+<article class="tip-container" aria-labelledby="forms-sr-testing">
+  <h2 id="forms-sr-testing" class="tip-title">Try it yourself</h2>
   <h3>Using a mouse</h3>
   <p>
     Click "Product name", "Description", and "In stock" in the first form on this page. Notice that nothing happens. Now try the second form, where we added explicit labels. Notice that clicking them activates the correct input.
@@ -89,15 +89,16 @@
   <p>
     Press <code>cmd + F5</code> to turn VoiceOver on, then use <code>control + option + right/left arrow</code> to navigate to the first form. For inputs without labels, the screen reader reads "edit text, blank" and "unticked, tick box". Users won't be able to tell what these fields are for. Now navigate to the second form with explicit labels. Here the screen reader announces the purpose of the fields - "Product name, edit text" and "In stock, unticked, tick box". And for the search input with a hidden label, it reads "Type something to search, menu pop-up, edit text". When you're done you can switch VoiceOver off with <code>cmd + F5</code>.
   </p>
-</section>
+</article>
 
-<section>
-  <h2>Labels in simple_form</h2>
-  <p>TBD</p>
-</section>
+<article aria-labelledby="forms-simple-form">
+  <h2 id="forms-simple-form">Labels in simple_form</h2>
 
-<section>
-  <h2>Form groups</h2>
+  <p>The great thing about <%= link_to "simple_form", "https://github.com/heartcombo/simple_form" %> is that it automatically generates labels for you. You can overwrite the default label with your custom text: <code><%%= f.input :username, label: 'Your username please' %></code>. The only thing you need to remember is to not disable the labels.</p>
+</article>
+
+<article aria-labelledby="forms-form-groups">
+  <h2 id="forms-form-groups">Form groups</h2>
     <p>Let's take the <code>radio_button</code> as an example. For this element, Rails generates an input id by joining the object name, method, and value with an underscore. The input below gets an id of <code>post_category_accessibility</code>. The label's <code>for</code> attribute is generated from the object and method names, which are the first two arguments, the third one being the string value that's rendered on the page. So to associate them, we need to combine the method and value of the input.</p>
   <p>
     <fieldset>
@@ -112,10 +113,10 @@
       <% end %>
     </fieldset>
   </p>
-</section>
+</article>
 
 <section class="mb-2">
-  <h2>Resources</h2>
+  <h2 id="forms-resources">Resources</h2>
   <ul>
     <li><a href="https://apidock.com/rails/ActionView/Helpers/FormHelper/label">Rails docs - Label form helper</a></li>
     <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/">WAI Tutorials - Labels</a></li>
