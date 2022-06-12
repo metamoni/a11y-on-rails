@@ -94,7 +94,7 @@
 <article aria-labelledby="forms-simple-form">
   <h2 id="forms-simple-form">Labels in simple_form</h2>
 
-  <p>The great thing about <%= link_to "simple_form", "https://github.com/heartcombo/simple_form" %> is that it automatically generates labels for you. You can overwrite the default label with your custom text: <code><%%= f.input :username, label: 'Your username please' %></code>. The only thing you need to remember is to not disable the labels.</p>
+  <p>The great thing about <%= link_to "simple_form", "https://github.com/heartcombo/simple_form" %> is that it automatically generates labels for you. You can overwrite the default label with your custom text: <code><%%= f.input :username, label: 'Your username' %></code>. The only thing you need to remember is to not disable the labels. If you don't want to display the label, use CSS to hide it: <code><%%= f.input :username, label_html: { class: 'sr-only' } %></code>.</p>
 </article>
 
 <article aria-labelledby="forms-form-groups">
