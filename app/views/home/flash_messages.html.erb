@@ -3,9 +3,7 @@
 <section>
   <h2>The problem</h2>
 
-  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages are rendered without a page reload and are skipped by screen readers. Assistive tech users will not be able to hear any flash messages dynamically added to the page.</p>
-
-  <p>This is where ARIA live regions come in. These are useful for any dynamic updates, including search results.</p>
+  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages need a bit more work to be accessible by assistive tech users, because they don't get announced to screen readers when they're added to the page. To announce these types of dynamic updates &#8212; including search results, errors, or any notifications &#8212; you need to use <code>aria-live</code>.</p>
 </section>
 
 <section class="mb-2">

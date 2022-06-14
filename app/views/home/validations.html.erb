@@ -1,41 +1,17 @@
-<h1>Validations</h1>
+<h1>Validation errors</h1>
 
-<section>
-  <h2>The problem</h2>
+<article aria-labelledby="validations-problem">
+  <h2 id="validations-problem">The problem</h2>
 
-  <p>Validation errors and flash messages are a great way to communicate important information to your users. But dynamic page updates rendered without a page reload are not announced by screen readers.</p>
+  <p>Validation errors communicate important information to your users. But dynamic page updates don't get automatically announced by screen readers. This is where ARIA live regions come in. You can use <code>aria-live</code> to announce any dynamic updates including search results, alerts, notificsations or validation errors.</p>
+</article>
 
-  <p>This is where ARIA live regions come in. These are useful for any dynamic updates, including search results.</p>
-</section>
+<article aria-labelledby="validations-aria-live">
+  <h2 id="validations-aria-live">How to use ARIA live regions</h2>
+</article>
 
-<section>
-  <h2>How to use ARIA live regions</h2>
-
-  <p>Say we have the following code in our view:</p>
-
-    <code>
-    <pre>
-
-    <%% flash.each do |type, msg| %>
-      &lt;p&gt;<%%= msg %>&lt;/p&gt;
-    <%% end %>
-    </pre>
-    </code>
-
-  <p>To make assistive tech announce the message, we can add an <code>aria-live</code> attribute to the paragraph element.</p>
-
-  <code>
-  <pre>
-
-    <%% flash.each do |type, msg| %>
-      &lt;p aria-live="polite"&gt;<%%= msg %>&lt;/p&gt;
-    <%% end %>
-  </pre>
-  </code>
-</section>
-
-<section class="mb-4">
-  <h2>Form validation</h2>
+<article class="mb-4" aria-labelledby="validations-forms">
+  <h2 id="validations-forms">Form validation</h2>
 
   <p>The form below uses native HTML validation by adding the <code>required</code> attribute to the field. The screen reader announces the error automatically, without any extra code.</p>
 
@@ -48,12 +24,12 @@
     <%= f.check_box :available %>
     <%= f.submit "Save" %>
   <% end %>
-</section>
+</article>
 
-<section class="tip-container">
-  <h2 class="tip-title">Try it yourself</h2>
+<article class="tip-container" aria-labelledby="validations-demo">
+  <h2 class="tip-title" id="validations-demo">Try it yourself</h2>
   <p>If you're on a Mac, you can verify your work with VoiceOver. Press <code>cmd + F5</code> to turn it on, then try to submit the form without filling out the input. You should hear the validation error being announced.</p>
-</section>
+</article>
 
 <section class="mb-2">
   <h2>Resources</h2>
