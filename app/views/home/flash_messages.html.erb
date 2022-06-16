@@ -1,42 +1,34 @@
-<h1>Flash messages</h1>
+<h1>Accessible flash messages</h1>
 
-<section>
-  <h2>The problem</h2>
+<nav aria-label="Page contents menu">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#flash-problem">The problem</a></li>
+    <li><a href="#flash-aria-live">ARIA live regions and flash messages</a></li>
+    <li><a href="#flash-resources">Resources</a></li>
+  </ol>
+</nav>
 
-  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages need a bit more work to be accessible by assistive tech users, because they don't get announced to screen readers when they're added to the page. To announce these types of dynamic updates &#8212; including search results, errors, or any notifications &#8212; you need to use <code>aria-live</code>.</p>
-</section>
+<article aria-labelledby="flash-problem">
+  <h2 id="flash-problem">The problem</h2>
 
-<section class="mb-2">
-  <h2>ARIA live regions and flash messages</h2>
+  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages need a bit more work to be accessible to assistive tech users. In order to expose dynamic updates to screen readers &#8212; including search results, alerts or any notifications &#8212; you need to use <code>aria-live</code> or <%= link_to "ARIA live region roles", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#4._live_region_roles" %>. If you're going with roles, make sure to read the documentation carefully and use them correctly.</p>
+</article>
 
-  <p>Say we have the following code in our view:</p>
+<article class="mb-2" aria-labelledby="flash-aria-live">
+  <h2 id="flash-aria-live">ARIA live regions and flash messages</h2>
 
-    <code>
-    <pre>
+  <p>Say you want to display flash messages in your view. To make assistive tech announce them, you can add an <code>aria-live="polite"</code> attribute to the wrapping element.</p>
 
-    <%% flash.each do |type, msg| %>
-      &lt;p&gt;<%%= msg %>&lt;/p&gt;
-    <%% end %>
-    </pre>
-    </code>
-
-  <p>To make assistive tech announce the message, we can add an <code>aria-live</code> attribute to the paragraph element.</p>
-
-  <code>
-  <pre>
-
-    <%% flash.each do |type, msg| %>
-      &lt;p aria-live="polite"&gt;<%%= msg %>&lt;/p&gt;
-    <%% end %>
-  </pre>
-  </code>
-</section>
+  <script src="https://gist.github.com/metamoni/5d30369b0c3cf40b463cd23df1aa9e96.js"></script>
+</article>
 
 <section class="mb-2">
-  <h2>Resources</h2>
+  <h2 id="flash-resources">Resources</h2>
   <ul>
     <li><a href="https://github.com/joemasilotti/railsdevs.com/blob/cf512f61b9fdb2bd7f005319fc5ee1b0cd4ef363/app/views/shared/_flash.html.erb">Code sample from Railsdevs</a></li>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">MDN - ARIA live regions</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#4._live_region_roles">MDN - ARIA live region roles</a></li>
   </ul>
 </section>
 
