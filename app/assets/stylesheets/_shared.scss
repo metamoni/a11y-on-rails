@@ -45,6 +45,13 @@
   }
 }
 
+.code-sample-container {
+  margin: 2em auto 0 auto;
+  border: 1px solid $gray;
+  padding: 1em;
+  width: 50%;
+}
+
 .flex-center {
   display: flex;
   justify-content: space-between;
