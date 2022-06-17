@@ -22,23 +22,33 @@
 
 <article aria-labelledby="images-rails-header" id="images-rails">
   <h2 id="images-rails-header">Images in Rails</h2>
-  <p>Rails' image_tag helper makes it easy to add images to your website. <code><%%= image_tag "icon.png" %></code> will generate the following HTML: <code>&lt;img src="/assets/icon.png" /&gt;</code>. To make this accessible, you need to add an <code>alt</code> attribute, like so: <code><%%= image_tag "rails.png", alt: "Alternative text" %></code>.</p>
+  <p>
+    Rails' image_tag helper makes it easy to add images to your website. <code><%%= image_tag "icon.png" %></code> will generate the following HTML: <code>&lt;img src="/assets/icon.png" /&gt;</code>. To make this accessible, you need to add an <code>alt</code> attribute, like so:
+  </p>
+  <p>
+    <iframe
+      src="https://www.thiscodeworks.com/embed/62ac46f58e180e00152748ab"
+      style="width: 100%; height: 99px;"
+      frameborder="0"
+      title="Add alternative text to image_tag">
+    </iframe>
+  </p>
 </article>
 
 <article aria-labelledby="images-how-to-header" id="images-how-to">
   <h2 id="images-how-to-header">How it works</h2>
+
   <p>To sighted users, the two images below might look identical. Screen reader users, on the other hand, will get a completely different experience.</p>
 
   <h3>Without an alt text</h3>
-  <code aria-hidden="true"><%%= image_tag "bruno.jpg" %></code>
-  <p>This view helper generates an image without an <code>alt</code> text. Without any information to go on, screen readers will describe it as an "unlabelled image".</p>
+
+  <p>On its own, <code><%%= image_tag "bruno.jpg" %></code> generates an image without <code>alt</code> text. Without any information to go on, screen readers will describe it as an "unlabelled image".</p>
+
   <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', "aria-hidden": true %>
 
   <h3>With a descriptive alt text</h3>
-  <code>
-    <%%= image_tag "bruno.jpg", alt: "Dog with a tennis ball in its mouth" %>
-  </code>
-  <p>For this image, however, the screen reader will announce the provided alt text.</p>
+  <p>However, if we change this to <code><%%= image_tag "bruno.jpg", alt: "Dog with a tennis ball in its mouth" %></code>, the screen reader will announce the provided alt text.</p>
+
   <%= image_tag "bruno.jpg", style: 'height: 50%; width: 50%;', alt: "Dog with a tennis ball in its mouth" %>
 </article>
 
@@ -48,27 +58,30 @@
 
   <p>James Martin's <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg" %> gem allows you to use the <code>inline_svg_tag</code> helper to add a title and description. It also adds an ARIA label for additional support across different browsers and screen readers. Here's the correct usage for an image that needs text:</p>
 
-  <code>
-    <%%=
-      inline_svg_tag('icon.svg',
-        aria: true, title: 'An SVG',
-        desc: 'This is my SVG. There are many like it. You get the picture')
-    %>
-  </code>
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac489c8e180e00152748af"
+    style="width: 100%; height: 164px;"
+    frameborder="0"
+    title="Use the inline_svg_tag helper with ARIA">
+  </iframe>
 
   <p>and for a hidden SVG:</p>
 
-  <code>
-    <%%= inline_svg_tag('icon.svg', aria_hidden: true) %>
-  </code>
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac49288e180e00152748b6"
+    style="width: 100%; height: 99px;"
+    frameborder="0"
+    title="Hide decorative inline SVGs">
+  </iframe>
 
-  <p>If you prefer not to add another gem, you can write your own helper. I used <%= link_to "this example", "https://thoughtbot.com/blog/organized-workflow-for-svg" %> as a starting point to create <%= link_to "my own simplified helper", "https://github.com/metamoni/a11y-on-rails/blob/main/app/helpers/svg_helper.rb" %>. When no title is specified, the <code>role</code> is set to <code>presentation</code> and the image is hidden from screen readers. If a <code>title</code> is specified, the <code>role</code> is automatically updated to <code>img</code>. You can extend this to support a <code>desc</code>, <code>aria-label</code> or any other attribute you need. Here's how it works:</p>
+  <p>If you don't want to add another gem, you can write your own helper. I used <%= link_to "this example", "https://thoughtbot.com/blog/organized-workflow-for-svg" %> as a starting point to create <%= link_to "a simple helper", "https://github.com/metamoni/a11y-on-rails/blob/main/app/helpers/svg_helper.rb" %>. When no title is specified, the <code>role</code> is set to <code>presentation</code> and the image is hidden from screen readers. If a <code>title</code> is specified, the <code>role</code> is automatically updated to <code>img</code>. You can extend this to support a <code>desc</code>, <code>aria-label</code> or any other attribute you need. Here's how it works:</p>
 
-  <p>
-    <code>
-      <%%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background' %>
-    </code>
-  </p>
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac49dc8e180e00152748b8"
+    style="width: 100%; height: 99px;"
+    frameborder="0"
+    title="Accessible SVG using custom helper">
+  </iframe>
 
   <%= inline_svg 'edinburgh.svg', title: 'The Edinburgh skyline on a purple background', style: 'background-color:DarkSlateBlue' %>
 </article>

@@ -38,24 +38,15 @@
       Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag, and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
     </p>
     
-    <p class="mb-0">
-      Let's fix the previous form using explicit labels. Here's the code:
+    <p>Let's fix the previous form using explicit labels. Here's the code:</p>
 
-      <code>
-      <pre>
+    <iframe
+      src="https://www.thiscodeworks.com/embed/62ac4a428e180e00152748bb"
+      style="width: 100%; height: 203px;"
+      frameborder="0"
+      title="Adding explicit labels with FormHelper">
+    </iframe>
 
-  <%%= form_for :product do |f| %>
-    <%%= f.label :product_name, "Product name" %>
-    <%%= f.text_field :product_name %>
-    <%%= f.label :description, "Description" %>
-    <%%= f.text_field :description %>
-    <%%= f.label :available, "In stock" %>
-    <%%= f.check_box :available %>
-    <%%= f.submit "Save" %>
-  <%% end %>
-      </pre>
-      </code>
-    </p>
     <p>...and the result:</p>
     
     <%= form_for :product do |f| %>
@@ -106,12 +97,37 @@
 <article aria-labelledby="forms-simple-form">
   <h2 id="forms-simple-form">Labels in simple_form</h2>
 
-  <p>The great thing about <%= link_to "simple_form", "https://github.com/heartcombo/simple_form" %> is that it automatically generates labels for you. You can overwrite the default label with your custom text: <code><%%= f.input :username, label: 'Your username' %></code>. The only thing you need to remember is to not disable the labels. If you don't want to display the label, use CSS to hide it: <code><%%= f.input :username, label_html: { class: 'sr-only' } %></code>.</p>
+  <p>The great thing about <%= link_to "simple_form", "https://github.com/heartcombo/simple_form" %> is that it automatically generates labels for you. You can overwrite the default label with your custom text:</p>
+
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac4b328e180e00152748be"
+    style="width: 100%; height: 99px;"
+    frameborder="0"
+    title="Custom labels with simple_form">
+  </iframe>
+  
+  <p>The only thing you need to remember is to not disable the labels. If you don't want to display the label, use CSS to hide it:</p>
+
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac4ade8e180e00152748bd"
+    style="width: 100%; height: 99px;"
+    frameborder="0"
+    title="Hiding labels with CSS">
+  </iframe>
 </article>
 
 <article aria-labelledby="forms-form-groups">
   <h2 id="forms-form-groups">Form groups</h2>
-    <p>Let's take the <code>radio_button</code> as an example. For this element, Rails generates an input id by joining the object name, method, and value with an underscore. The input below gets an id of <code>post_category_accessibility</code>. The label's <code>for</code> attribute is generated from the object and method names, which are the first two arguments, the third one being the string value that's rendered on the page. So to associate them, we need to combine the method and value of the input.</p>
+  
+  <p>Collections of radio or checkbox inputs need to be wrapped in a <code>fieldset</code> element and provided a <code>legend</code>. A common mistake developers make is adding lots of <code>div</code> wrappers to help with styling. But the <code>legend</code> needs to be a direct child of the <code>fieldset</code> element for this to work. Add any element between those two and you'll get invalid HTML. It's always a good idea to run your code through an <%= link_to "HTML validator", "https://appdevtools.com/html-validator" %>.</p>
+  
+  <iframe
+    src="https://www.thiscodeworks.com/embed/62ac4b968e180e00152748c0"
+    style="width: 100%; height: 229px;"
+    frameborder="0"
+    title="Accessible form groups">
+  </iframe>
+
   <p>
     <fieldset>
       <legend>Which color do you prefer?</legend>
