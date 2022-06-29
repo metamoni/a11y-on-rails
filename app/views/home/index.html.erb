@@ -1,8 +1,13 @@
-<h1>Welcome to A11y on Rails</h1>
+<nav id="homepage-nav">
+  <%= link_to "A11y on Rails", root_path, id: "logo" %>
+  <%= link_to "About", about_path %>
+</nav>
+
+<h1 id="homepage-header">Welcome to A11y on Rails!</h1>
 
 <p>In most traditional web apps, you can achieve a reasonable level of accessibility with semantic HTML and a good page structure. Rails apps are no different. The framework provides lots of handy Action View Helpers and they come with everything you need to make your app accessible. However, just like when writing plain HTML, it's easy enough to forget about crucial attributes and end up with a page that is not accessible.</p>
 
-<p>This website aims to tackle some of the most important accessibility concerns that you'll need to address in a Rails apps. It's WIP and I'll be adding more topics (including links, buttons, accessibility testing and ARIA) soon.</p>
+<p>This website aims to tackle some of the most important accessibility concerns that you'll need to address in a Rails apps. You can read more about the project <%= link_to "here", about_path %>.</p>
 
 <nav aria-label="Main menu">
   <ul>

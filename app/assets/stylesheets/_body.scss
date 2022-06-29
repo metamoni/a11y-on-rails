@@ -8,12 +8,6 @@ code {
   background-color: #f1f1f1;
 }
 
-pre {
-  width: 100%;
-  font-size: 115%;
-  background-color: #f1f1f1;
-}
-
 form {
   input[type=text], input[type=submit] {
     display: block;
@@ -23,6 +17,10 @@ form {
   input[type=submit] {
     margin-top: 1em;
   }
+}
+
+#homepage-header {
+  text-align: center;
 }
 
 

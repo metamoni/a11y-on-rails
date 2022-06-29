@@ -1,0 +1,19 @@
+#homepage-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  font-family: 'Zilla Slab Highlight', cursive;
+  color: black;
+  font-size: 160%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+
+  &:visited {
+    color: black;
+  }
+}

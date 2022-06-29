@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  def about
+  end
+
   def index
   end
 
@@ -11,7 +14,10 @@ class HomeController < ApplicationController
   def validations
   end
 
-  def links_and_buttons
+  def links
+  end
+
+  def buttons
   end
 
   def language
@@ -21,6 +27,9 @@ class HomeController < ApplicationController
   end
 
   def tables
+  end
+
+  def testing
   end
 
   def navigation
