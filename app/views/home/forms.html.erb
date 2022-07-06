@@ -15,7 +15,7 @@
 <article aria-labelledby="forms-the-problem">
   <h2 id="forms-the-problem">The problem</h2>
   <p>
-    The purpose of each form field should be clear, both for the sake of your sighted users, and for the sake of those using assitive tech. Web browsers use labels to provide a larger clickable area, making it easier to jump to the right input. And screen readers need labels to describe form controls to users.
+    The purpose of each form field should be clear, both for the sake of your sighted users and for those using assistive tech. Web browsers use labels to provide a larger clickable area, making it easier to jump to the right input. And screen readers need labels to describe form controls to users.
   </p>
 </article>
 
@@ -35,7 +35,7 @@
   <article class="mt-2" aria-labelledby="explicit-labels">
     <h3 id="explicit-labels">Explicit labels</h3>
     <p>
-      Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag, and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
+      Rails gives us a handy <code>label</code> method through FormHelper. We can add a label explicitly by placing it either before or after the input tag and giving it a <code>for</code> attribute with the same value as the input's <code>id</code>. This creates a link between the two elements, helping screen readers know which input a label belongs to. If done correctly, clicking the label text should also activate the input - select, check, or focus it.
     </p>
     
     <p>Let's fix the previous form using explicit labels. Here's the code:</p>
@@ -85,7 +85,7 @@
   <h2 id="forms-sr-testing" class="tip-title">Try it yourself</h2>
   <h3>Using a mouse</h3>
   <p>
-    Click "Product name", "Description", and "In stock" in the first form on this page. Notice that nothing happens. Now try the second form, where we added explicit labels. Notice that clicking them activates the correct input.
+    Click "Product name", "Description" and "In stock" in the first form on this page. Notice that nothing happens. Now try the second form, where we added explicit labels. Notice that clicking them activates the correct input.
   </p>
 
   <h3>Using VoiceOver</h3>
