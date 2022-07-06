@@ -25,3 +25,15 @@
     <%# <li><%= link_to 'Semantic HMTL and ARIA', semantic_html_and_aria_path %><%#</li> %>
   </ul>
 </nav>
+
+<main>
+  <%= render "shared/article_preview",
+               title: "Images",
+               text: "According to the <a href='https://webaim.org/projects/million/'>WebAIM Million</a>, an annual accessibiloty audit of the top 1,000,000 websites, missing alternative text for images is the second most common issue.",
+               link_text: "Read more about images",
+               link: images_path %>
+  <%= render "shared/article_preview",
+               title: "Forms",
+               text: "The purpose of each form field should be clear, both for sighted users and those using assistive tech. Missing labels are one of the most common accessibility issues in web forms.",
+               link: forms_path %>
+</main>
