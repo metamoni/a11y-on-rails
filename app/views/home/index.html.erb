@@ -1,39 +1,28 @@
-<nav id="homepage-nav">
-  <%= link_to "A11y on Rails", root_path, id: "logo" %>
-  <%= link_to "About", about_path %>
-</nav>
-
 <h1 id="homepage-header">Welcome to A11y on Rails!</h1>
 
 <p>In most traditional web apps, you can achieve a reasonable level of accessibility with semantic HTML and a good page structure. Rails apps are no different. The framework provides lots of handy Action View Helpers and they come with everything you need to make your app accessible. However, just like when writing plain HTML, it's easy enough to forget about crucial attributes and end up with a page that is not accessible.</p>
 
 <p>This website aims to tackle some of the most important accessibility concerns that you'll need to address in a Rails apps. You can read more about the project <%= link_to "here", about_path %>.</p>
 
-<nav aria-label="Main menu">
-  <ul>
-    <li><%= link_to 'Images', images_path %></li>
-    <li><%= link_to 'Forms', forms_path %></li>
-    <li><%= link_to 'Validations', validations_path %></li>
-    <li><%= link_to 'Flash messages', flash_messages_path %></li>
-    <%#= link_to 'Links', links_path %>
-    <li><%= link_to 'i18n and document language', language_path %></li>
-    <%# <li><%= link_to 'Buttons', buttons_path %><%#</li> %>
-    <%# <li><%= link_to 'Tables', tables_path %><%#</li> %>
-    <%# <li><%= link_to 'Navigation', navigation_path %><%#</li> %>
-    <%# <li><%= link_to 'Page structure', page_structure_path %><%#</li> %>
-    <%# <li><%= link_to 'Accessibility testing', testing_path %><%#</li> %>
-    <%# <li><%= link_to 'Semantic HMTL and ARIA', semantic_html_and_aria_path %><%#</li> %>
-  </ul>
-</nav>
-
-<main>
+<section id="articles-container">
   <%= render "shared/article_preview",
-               title: "Images",
-               text: "According to the <a href='https://webaim.org/projects/million/'>WebAIM Million</a>, an annual accessibiloty audit of the top 1,000,000 websites, missing alternative text for images is the second most common issue.",
-               link_text: "Read more about images",
-               link: images_path %>
+                title: "Images",
+                text: "All images must have an <code>alt</code> attribute. This allows screen readers to either describe relevant images to users, or hide them if they're not relevant. Learn how to make images accessible in Rails apps.",
+                link: images_path %>
   <%= render "shared/article_preview",
-               title: "Forms",
-               text: "The purpose of each form field should be clear, both for sighted users and those using assistive tech. Missing labels are one of the most common accessibility issues in web forms.",
-               link: forms_path %>
-</main>
+                title: "Forms",
+                text: "The purpose of each form field should be clear. Missing labels are one of the most common accessibility issues in web forms. Learn how to use form helpers the right way.",
+                link: forms_path %>
+  <%= render "shared/article_preview",
+                title: "Flash messages",
+                text: "Dynamic page updates, including flash messages, need a bit more work to be accessible to assistive tech users. Learn how to use ARIA live regions to make flash messages accessible.",
+                link: flash_messages_path %>
+  <%= render "shared/article_preview",
+                title: "Form validation",
+                text: "Just like flash messages, custom validation errors are usually skipped by screen readers. Learn how ARIA live regions and ARIA roles can make your forms accessible to assistive tech users.",
+                link: validations_path %>
+  <%= render "shared/article_preview",
+                title: "Document language",
+                text: "Adding a <code>lang</code> attribute to your HTML is an easy win. It helps render the text more accurately, load the correct pronunciation rules, and display video captions correctly.",
+                link: language_path %>
+</section>

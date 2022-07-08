@@ -1,3 +1,5 @@
+@import 'colours';
+
 body {
   width: 60%;
   margin: 0 auto 3em auto;
@@ -5,7 +7,7 @@ body {
 }
 
 code {
-  background-color: #f1f1f1;
+  background-color: $off-white;
 }
 
 form {
@@ -23,6 +25,22 @@ form {
   text-align: center;
 }
 
+#articles-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2em;
+  row-gap: 2em;
+
+  article {
+    h2 {
+      text-transform: uppercase;
+    }
+
+    padding: 0 1em;
+    border-radius: 2px;
+    border: 1px dotted $gray;
+  }
+}
 
 @media screen and (max-width: 768px) {
   body {
