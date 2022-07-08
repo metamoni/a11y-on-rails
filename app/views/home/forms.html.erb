@@ -22,7 +22,7 @@
 <article aria-labelledby="forms-labels-in-rails">
   <h2 id="forms-labels-in-rails">Labels in Rails</h2>
   <p>
-    At first glance, the example below looks OK. The purpose of each field seems to be described anyway. However, this is done with plain text rather than with labels: <code>Product name: <%%= f.text_field :product_name %></code>. Since we don't have any label tags that we've associated with each input, the functionality of this form is limited. Many people would struggle to tick "In stock", as the click area is very small. But with a properly associated label they'd be able to click both the text and the box to interact with it.
+    At first glance, the example below looks OK. The purpose of each field seems to be described anyway. However, this is done with plain text rather than with labels: <code>Product name: <%%= f.text_field :product_name %></code>. Since we don't have any label tags that we've associated with each input, the functionality of this form is limited. Many people would struggle to tick "In stock", as the click area is very small. But with a properly associated label, they'd be able to click both the text and the box to interact with it.
   </p>
 
   <%= form_for :form, html: { class: "inaccessible-form" } do |f| %>

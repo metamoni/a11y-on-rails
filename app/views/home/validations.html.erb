@@ -47,7 +47,7 @@
 
 <article aria-labelledby="validations-custom">
   <h2 id="validations-custom">Custom form validation</h2>
-  <p>If you're writing your own validation errors you need to make sure that they're accessible to screen readers too. In most cases, adding <code>aria-live="polite"</code> to the markup containing your error message should suffice. This allows the screen reader to finish any ongoing announcements, then read read out the error message.</p>
+  <p>If you're writing your own validation errors you need to make sure that they're accessible to screen readers too. In most cases, adding <code>aria-live="polite"</code> to the markup containing your error message should suffice. This allows the screen reader to finish any ongoing announcements, then read out the error message.</p>
   
   <p>The example below is taken from <%= link_to "dev.to", "https://github.com/forem/forem/blob/5e93d3a25ecc800703aa100d286c8c75c9173ddf/app/views/users/edit.html.erb#L63" %>. When the user's email is blank, a series of custom validation errors are announced.</p>
 

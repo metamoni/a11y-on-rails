@@ -12,7 +12,7 @@
 <article aria-labelledby="flash-problem">
   <h2 id="flash-problem">The problem</h2>
 
-  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages need a bit more work to be accessible to assistive tech users. In order to expose dynamic updates to screen readers &#8212; including search results, alerts or any notifications &#8212; you need to use <code>aria-live</code> or <%= link_to "ARIA live region roles", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#4._live_region_roles" %>. If you're going with roles, make sure to read the documentation carefully and use them correctly.</p>
+  <p>Just like <%= link_to "validation errors", validations_path %>, flash messages need a bit more work to be accessible to assistive tech users. To expose dynamic updates to screen readers &#8212; including search results, alerts, or any notifications &#8212; you need to use <code>aria-live</code> or <%= link_to "ARIA live region roles", "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#4._live_region_roles" %>. If you're going with roles, make sure to read the documentation carefully and use them correctly.</p>
 </article>
 
 <article class="mb-2" aria-labelledby="flash-aria-live">

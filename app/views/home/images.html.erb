@@ -17,7 +17,7 @@
   <h2 id="images-problem-header">The problem</h2>
   <p>According to the <a href="https://webaim.org/projects/million/">WebAIM Million</a>, an annual accessibility audit of the top 1,000,000 websites, missing alternative text for images is the second most common issue.</p>
 
-  <p>All images on the web must have an <code>alt</code> attribute. Screen readers need to be able to describe relevant images to users, and they can only do that if there's an <code>alt</code> text. Decorative images, on the other hand, are a hindrance to assitive tech users and should be ignored with <code>alt=""</code>.</p>
+  <p>All images on the web must have an <code>alt</code> attribute. Screen readers need to be able to describe relevant images to users, and they can only do that if there's an <code>alt</code> text. Decorative images, on the other hand, are a hindrance to assistive tech users and should be ignored with <code>alt=""</code>.</p>
 </article>
 
 <article aria-labelledby="images-rails-header" id="images-rails">
@@ -74,7 +74,7 @@
     title="Hide decorative inline SVGs">
   </iframe>
 
-  <p>If you don't want to add another gem, you can write your own helper. I used <%= link_to "this example", "https://thoughtbot.com/blog/organized-workflow-for-svg" %> as a starting point to create <%= link_to "a simple helper", "https://github.com/metamoni/a11y-on-rails/blob/main/app/helpers/svg_helper.rb" %>. When no title is specified, the <code>role</code> is set to <code>presentation</code> and the image is hidden from screen readers. If a <code>title</code> is specified, the <code>role</code> is automatically updated to <code>img</code>. You can extend this to support a <code>desc</code>, <code>aria-label</code> or any other attribute you need. Here's how it works:</p>
+  <p>If you don't want to add another gem, you can write your own helper. I used <%= link_to "this example", "https://thoughtbot.com/blog/organized-workflow-for-svg" %> as a starting point to create <%= link_to "a simple helper", "https://github.com/metamoni/a11y-on-rails/blob/main/app/helpers/svg_helper.rb" %>. When no title is specified, the <code>role</code> is set to <code>presentation</code> and the image is hidden from screen readers. If a <code>title</code> is specified, the <code>role</code> is automatically updated to <code>img</code>. You can extend this to support a <code>desc</code>, <code>aria-label</code>, or any other attribute you need. Here's how it works:</p>
 
   <iframe
     src="https://www.thiscodeworks.com/embed/62ac49dc8e180e00152748b8"
