@@ -1,0 +1,9 @@
+<article>
+  <h2><%= title %></h2>
+  <p><%= text.html_safe %></p>
+  <p>
+    <%= link_to link do %>
+      Read more <span class="sr-only">about accessible <%= title %> in Rails</span>
+    <% end %>
+  </p>
+</article>
